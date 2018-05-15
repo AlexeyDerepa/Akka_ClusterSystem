@@ -1,0 +1,22 @@
+﻿akka {
+	#actor {
+	#	provider = cluster
+	#}
+	actor {
+		provider = "Akka.Cluster.ClusterActorRefProvider, Akka.Cluster"
+    }
+            
+	remote {
+		dot-netty.tcp {
+			hostname = "localhost"
+			port = 0
+			maximum-frame-size = 256000b
+		}
+	}            
+
+	cluster {
+		seed-nodes = ["akka.tcp://IFactorySistem@localhost:2551"]
+		roles = [reader]
+		seed-node-timeout = 5s
+	}
+}

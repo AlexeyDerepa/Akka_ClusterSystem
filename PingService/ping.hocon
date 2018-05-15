@@ -1,0 +1,18 @@
+﻿akka {
+	actor {
+		provider = cluster
+	}
+            
+	remote {
+		dot-netty.tcp {
+			hostname = "127.0.0.1"
+			port = 0
+			maximum-frame-size = 256000b
+		}
+	}            
+
+	cluster {
+		seed-nodes = ["akka.tcp://IFactorySistem@localhost:4053"]
+		roles = [ping]
+	}
+}
